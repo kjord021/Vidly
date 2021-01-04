@@ -1,0 +1,41 @@
+﻿@model Vidly.ViewModels.CustomerMovieViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@**
+    Shows all of the customers from the current data set
+*@
+
+
+@{
+    var hasCustomers = (Model.Customers.Count > 0);
+}
+
+<h1>Customers</h1>
+
+@if (hasCustomers)
+{
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Customer</th>
+            </tr>
+        </thead>
+        @foreach (var customer in Model.Customers)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(customer.Name, "Details", "Customers", new { ID = customer.ID}, null)
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <br>
+    <p>We don't have any customers yet.</p>
+}
+

@@ -1,0 +1,41 @@
+﻿@model Vidly.ViewModels.IndexMovieViewModel 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@**
+    Shows all of the movies from the current data set
+*@
+
+
+@{ 
+    var hasMovies = (Model.Movies.Count > 0);
+}
+
+<h1>Movies</h1>
+
+@if (hasMovies)
+{
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Movie</th>
+            </tr>
+        </thead>
+        @foreach (var movie in Model.Movies) 
+        {
+               <tr>
+                   <td>
+                       @Html.ActionLink(movie.Name, "Details", "Movies", new { ID = movie.ID }, null)
+                   </td>
+               </tr>
+        }
+    </table>
+}
+else
+{
+    <br>
+    <p>We don't have any customers yet.</p>
+}
+
