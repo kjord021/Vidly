@@ -17,18 +17,20 @@
 
 @if (hasCustomers)
 {
-    <table>
+    <table class="table">
         <thead>
-            <tr>
+            <tr scope="row">
                 <th scope="col">Customer</th>
+                <th scope="col">Payment Type</th>
             </tr>
         </thead>
         @foreach (var customer in Model.Customers)
         {
-            <tr>
+            <tr scope="row">
                 <td>
                     @Html.ActionLink(customer.Name, "Details", "Customers", new { ID = customer.ID}, null)
                 </td>
+                <td>@customer.MembershipType.Name</td>
             </tr>
         }
     </table>

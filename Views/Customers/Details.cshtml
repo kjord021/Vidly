@@ -1,0 +1,30 @@
+﻿@model Vidly.Models.Customer
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+
+<ul>
+    
+    @switch (Model.MembershipTypeID)
+    {
+        case 1:
+            <li>Pay as you go</li>
+            break;
+        case 2:
+            <li>Monthly</li>
+            break;
+        case 3:
+            <li>Quarterly</li>
+            break;
+        case 4:
+            <li>Annually</li>
+            break;
+        default:
+            break;
+    }
+    <li>@Model.BirthDate</li>
+</ul>
